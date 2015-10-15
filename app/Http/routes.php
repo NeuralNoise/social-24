@@ -84,3 +84,4 @@ Route::get('/profile/edit', [
 Route::post('/profile/edit', [
     'uses' => '\Chatty\Http\Controllers\ProfileController@postEdit',
 ]);
+
