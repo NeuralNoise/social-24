@@ -68,3 +68,19 @@ Route::get('/user/{username}', [
     'uses' => '\Chatty\Http\Controllers\ProfileController@getProfile',
     'as' => 'profile.index',
 ]);
+
+
+/**
+ * Update profile
+ */
+
+
+Route::get('/profile/edit', [
+    'uses' => '\Chatty\Http\Controllers\ProfileController@getEdit',
+    'as' => 'profile.edit',
+    'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
+]);
+
+Route::post('/profile/edit', [
+    'uses' => '\Chatty\Http\Controllers\ProfileController@postEdit',
+]);
