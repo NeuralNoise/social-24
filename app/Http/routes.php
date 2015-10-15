@@ -22,3 +22,16 @@ Route::get('/signup', [
 Route::post('/signup', [
     'uses' => '\Chatty\Http\Controllers\AuthController@postSignup',
 ]);
+
+/**
+ * Sign in
+ */
+
+Route::get('/signin', [
+    'uses' => '\Chatty\Http\Controllers\AuthController@getSignin',
+    'as' => 'auth.signin'
+]);
+
+Route::post('/signin', [
+    'uses' => '\Chatty\Http\Controllers\AuthController@postSignin',
+]);
