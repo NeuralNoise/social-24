@@ -58,3 +58,13 @@ Route::get('/search', [
     'uses' => '\Chatty\Http\Controllers\SearchController@getResults',
     'as' => 'search.results',
 ]);
+
+
+/**
+ * User profile
+ */
+
+Route::get('/user/{username}', [
+    'uses' => '\Chatty\Http\Controllers\ProfileController@getProfile',
+    'as' => 'profile.index',
+]);

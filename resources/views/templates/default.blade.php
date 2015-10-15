@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chatty</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/social/public/css/bootstrap.min.css">
 </head>
 <body>
     @include('templates.partials.navigation')
