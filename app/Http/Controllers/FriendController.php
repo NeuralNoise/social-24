@@ -13,8 +13,11 @@ class FriendController extends Controller
     {
         $friends = Auth::user()->friends();
 
+        $requests = Auth::user()->friendRequests();
+
         return view('friends.index')
-            ->with('friends', $friends);
+            ->with('friends', $friends)
+            ->with('requests', $requests);
     }
 
 }
