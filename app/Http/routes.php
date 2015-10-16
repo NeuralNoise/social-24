@@ -95,3 +95,13 @@ Route::get('/friends', [
     'as' => 'friend.index',
     'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
 ]);
+
+/**
+ * Add a friend
+ */
+
+Route::get('/friends/add/{username}', [
+    'uses' => '\Chatty\Http\Controllers\FriendController@getAdd',
+    'as' => 'friend.add',
+    'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
+]);

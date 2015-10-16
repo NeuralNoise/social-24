@@ -117,7 +117,7 @@ class User extends Model implements AuthenticatableContract
     /**
      * Check if a user has a friend request pending from another user
      */
-    public function hasfriendRequestPending(User $user)
+    public function hasFriendRequestPending(User $user)
     {
         return (bool) $this->friendRequestsPending()->where('id', $user->id)->count();
     }
