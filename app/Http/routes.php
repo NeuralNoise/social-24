@@ -140,3 +140,13 @@ Route::post('/status/{statusId}/reply', [
     'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
 ]);
 
+
+/**
+ * Like
+ */
+
+Route::get('/status/{statusId}/like', [
+    'uses' => '\Chatty\Http\Controllers\StatusController@getLike',
+    'as' => 'status.like',
+    'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
+]);

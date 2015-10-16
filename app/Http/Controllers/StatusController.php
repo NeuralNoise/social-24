@@ -33,14 +33,12 @@ class StatusController extends Controller
 
         $status = Status::notReply()->find($statusId);
 
-        if ( !$status )
-        {
+        if (!$status) {
             return redirect()->route('home');
         }
 
         // check that the currently authenticated user is friend with the user who status this is
-        if ( !Auth::user()->isFriendWith($status->user) && Auth::user()->id !== $status->user_id)
-        {
+        if (!Auth::user()->isFriendWith($status->user) && Auth::user()->id !== $status->user_id) {
             return redirect()->route('home');
         }
 
@@ -52,6 +50,34 @@ class StatusController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function getLike($statusId)
+    {
+        $status = Status::find($statusId);
+
+        if ( !$status )
+        {
+            return redirect()->route('home');
+        }
+
+        //check if the user making the like is friend with the person they liked the status
+        if ( !Auth::user()->isFriendWith($status->user) )
+        {
+            return redirect()->route('home');
+        }
+
+        //check whether they've already liked the status
+        if ( Auth::user()->hasLikedStatus($status) )
+        {
+            return redirect()->back();
+        }
+
+        $like = $status->likes()->create([]);
+
+        Auth::user()->likes()->save($like);
+
+        return redirect()->back();
     }
 
 }
