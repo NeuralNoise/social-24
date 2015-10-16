@@ -85,3 +85,13 @@ Route::post('/profile/edit', [
     'uses' => '\Chatty\Http\Controllers\ProfileController@postEdit',
 ]);
 
+
+/**
+ * Friends
+ */
+
+Route::get('/friends', [
+    'uses' => '\Chatty\Http\Controllers\FriendController@getIndex',
+    'as' => 'friend.index',
+    'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
+]);
