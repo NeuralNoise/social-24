@@ -37,4 +37,12 @@ class Status extends Model
         return $this->hasMany('Chatty\Status', 'parent_id');
     }
 
+    /**
+     *  2nd arg is parsing the name of the polymorphic releation
+     */
+    public function likes()
+    {
+        return $this->morphMany('Chatty\Like', 'likeable');
+    }
+
 }
