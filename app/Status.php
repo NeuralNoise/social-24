@@ -21,4 +21,20 @@ class Status extends Model
         return $this->belongsTo('Chatty\User', 'user_id');
     }
 
+    /**
+     * Scope
+     */
+    public function scopeNotReply($query)
+    {
+        return $query->whereNull('parent_id');
+    }
+
+    /**
+     * Replies relationship
+     */
+    public function replies()
+    {
+        return $this->hasMany('Chatty\Status', 'parent_id');
+    }
+
 }

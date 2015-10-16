@@ -128,3 +128,15 @@ Route::post('/status', [
     'as' => 'status.post',
     'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
 ]);
+
+
+/**
+ * Reply to Statuses
+ */
+
+Route::post('/status/{statusId}/reply', [
+    'uses' => '\Chatty\Http\Controllers\StatusController@postReply',
+    'as' => 'status.reply',
+    'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
+]);
+
