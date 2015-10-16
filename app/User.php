@@ -157,4 +157,11 @@ class User extends Model implements AuthenticatableContract
         return (bool) $this->friends()->where('id', $user->id)->count();
     }
 
+    /**
+     * Relationship : A user can have many statuses
+     */
+    public function statuses()
+    {
+        return $this->hasMany('Chatty\Status', 'user_id');
+    }
 }

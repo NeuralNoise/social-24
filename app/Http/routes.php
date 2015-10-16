@@ -116,3 +116,15 @@ Route::get('/friends/accept/{username}', [
     'as' => 'friend.accept',
     'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
 ]);
+
+
+
+/**
+ * Statuses
+ */
+
+Route::post('/status', [
+    'uses' => '\Chatty\Http\Controllers\StatusController@postStatus',
+    'as' => 'status.post',
+    'middleware' => ['auth'] // here 'auth' is beign called from Kernel.php
+]);
