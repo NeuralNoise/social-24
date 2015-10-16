@@ -59,4 +59,47 @@ class User extends Model implements AuthenticatableContract
     {
         return "https://www.gravatar.com/avatar/{{ md5($this->email) }}?d=mm&s=40";
     }
+
+
+    /**
+     * The friends of a user
+     *
+     * @    the model
+     * @    the pivot table
+     * @    matching by user_id
+     * @    foreign key friend_id
+     */
+
+    public function friendsOfMine()
+    {
+        return $this->belongsToMany('Chatty\User', 'friends', 'user_id', 'friend_id');
+    }
+
+
+    /**
+     * Users who have this user as a friend
+     *
+     * @    the model
+     * @    the pivot table
+     * @    matching by friend_id
+     * @    foreign key user_id
+     */
+
+    public function friendOf()
+    {
+        return $this->belongsToMany('Chatty\User', 'friends', 'friend_id', 'user_id');
+    }
+
+
+    /**
+     * Pulling back friends who have accepted the request
+     */
+    public function friends()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', true)->get()
+            ->merge($this->friendOf()->wherePivot('accepted', true)->get());
+    }
+
+
+
 }
